@@ -1,9 +1,18 @@
 package com.about.country.view;
 
 
+
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
+
 import com.about.country.R;
+
+import java.util.ArrayList;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 
 /**
@@ -11,12 +20,37 @@ import com.about.country.R;
  */
 public class MainActivity extends AppCompatActivity {
 
+    @BindView(R.id.swipeContainer)
+    SwipeRefreshLayout swipeContainer;
+
+    @BindView(R.id.recycleViewContainer)
+    RecyclerView countryListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.country_list);
 
+        ButterKnife.bind(this);
+
+        initUI();
+
+    }
+
+    void initUI() {
+
+        // Setup refresh listener which triggers new data loading
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeContainer.setRefreshing(false);
+            }
+        });
+        // Configure the refreshing colors
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
     }
 
 
