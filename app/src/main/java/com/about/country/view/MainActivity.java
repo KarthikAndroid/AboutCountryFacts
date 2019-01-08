@@ -1,15 +1,19 @@
 package com.about.country.view;
 
-
-
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.about.country.R;
+import com.about.country.model.AboutCountryDetails;
 import com.about.country.model.AboutCountryListItem;
+import com.about.country.viewmodel.AboutContryViewModel;
 
 import java.util.ArrayList;
 
@@ -36,7 +40,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.country_list);
 
         ButterKnife.bind(this);
+        final AboutContryViewModel viewModel =
+                ViewModelProviders.of(this).get(AboutContryViewModel.class);
 
+        subscribeUi(viewModel.getAboutCountryItemsList());
         initUI();
 
     }
@@ -51,7 +58,10 @@ public class MainActivity extends AppCompatActivity {
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                swipeContainer.setRefreshing(false);
+                final AboutContryViewModel viewModel =
+                        ViewModelProviders.of(MainActivity.this).get(AboutContryViewModel.class);
+
+                viewModel.requestAboutCountryDetails();
             }
         });
         // Configure the refreshing colors
@@ -59,6 +69,30 @@ public class MainActivity extends AppCompatActivity {
                 android.R.color.holo_green_light,
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
+    }
+
+    /**
+     * Subscribe to Live Data. Whenever there is a change in the View Model Live data then it will be getting notified.
+     *
+     * @param liveData
+     */
+    private void subscribeUi(LiveData<AboutCountryDetails> liveData) {
+        // Update the list when the data changes
+        liveData.observe(this, new Observer<AboutCountryDetails>() {
+            @Override
+            public void onChanged(@Nullable AboutCountryDetails aboutCountryListItems) {
+
+                if (aboutCountryListItems != null) {
+                    setTitle(aboutCountryListItems.getTitle());
+                    aboutCountryAdapter.addListOfRows(aboutCountryListItems.getRows());
+                    aboutCountryAdapter.notifyDataSetChanged();
+                    swipeContainer.setRefreshing(false);
+                } else {
+                    swipeContainer.setRefreshing(false);
+                }
+
+            }
+        });
     }
 
 
