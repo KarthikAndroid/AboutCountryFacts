@@ -1,5 +1,5 @@
 # AboutCountryFacts
-This is the Simple Application used to Fetch the list of Country details from the remote URL and populate in Recycler View.
+This is the Simple Application used to Fetch the list of details about the Country from the remote URL and populate in Recycler View.
 This Application uses the Following Library and approaches for better and more polishing Code.
 
 1. It uses Retrofit to get the JSON values from the URL.
