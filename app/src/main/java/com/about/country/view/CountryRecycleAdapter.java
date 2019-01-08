@@ -55,12 +55,12 @@ public class CountryRecycleAdapter extends RecyclerView.Adapter<CountryRecycleAd
         if (row.getTitle() != null) {
             holder.itemName.setText(row.getTitle());
         } else {
-            holder.itemName.setText(R.string.no_title);
+            holder.itemName.setText(R.string.no_title_found);
         }
         if (row.getDescription() != null) {
             holder.itemDesc.setText(row.getDescription());
         } else {
-            holder.itemDesc.setText(R.string.no_description);
+            holder.itemDesc.setText(R.string.no_description_found);
         }
         if (row.getImageHref() != null) {
          //   Log.d("URLLLL", "" + row.getTitle() + row.getImageHref());
