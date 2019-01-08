@@ -5,9 +5,11 @@ package com.about.country.view;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.about.country.R;
+import com.about.country.model.AboutCountryListItem;
 
 import java.util.ArrayList;
 
@@ -26,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.recycleViewContainer)
     RecyclerView countryListView;
 
+    private CountryRecycleAdapter aboutCountryAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
 
     void initUI() {
 
+        aboutCountryAdapter = new CountryRecycleAdapter(this,new ArrayList<AboutCountryListItem>());
+
+        countryListView.setLayoutManager(new LinearLayoutManager(this));
+        countryListView.setAdapter(aboutCountryAdapter);
         // Setup refresh listener which triggers new data loading
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
