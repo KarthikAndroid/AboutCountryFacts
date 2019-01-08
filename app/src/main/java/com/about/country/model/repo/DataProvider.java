@@ -33,9 +33,7 @@ public class DataProvider {
 
     private MediatorLiveData<AboutCountryDetails> mObservableAbountCountryItemList = new MediatorLiveData<>();
 
-    private final static String JSON_FILE_COUNTRY_DETAIL = "countrydetails.json";
-
-    public DataProvider(Context context) {
+      public DataProvider(Context context) {
         this.context = context;
         ((BaseApplication) context).getAppComponent().inject(this);
 
@@ -60,7 +58,9 @@ public class DataProvider {
         return mObservableAbountCountryItemList;
     }
 
-
+    /**
+     * Request network to get a JSON data using Retrofit and RxJava.
+     */
     public void requestIForAboutCountryDetails() {
         aboutCountryService.getAboutCountryDetail()
                 .observeOn(AndroidSchedulers.mainThread())
