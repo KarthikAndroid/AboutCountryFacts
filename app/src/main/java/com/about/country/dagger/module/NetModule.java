@@ -3,6 +3,8 @@ package com.about.country.dagger.module;
 import android.content.Context;
 
 import com.about.country.dagger.scope.AppScope;
+import com.about.country.model.repo.AboutCountryService;
+import com.about.country.model.repo.DataProvider;
 
 import dagger.Module;
 import dagger.Provides;
@@ -46,6 +48,24 @@ public class NetModule {
                 .client(okHttpClient)
                 .build();
 
+    }
+
+    @Provides
+    @AppScope
+    AboutCountryService provideAboutCountryService(Retrofit retrofit) {
+        return retrofit.create(AboutCountryService.class);
+    }
+
+    @Provides
+    @AppScope
+    Context provideAppContext() {
+        return context;
+    }
+
+    @Provides
+    @AppScope
+    DataProvider provideDataprovider(Context context) {
+        return new DataProvider(context);
     }
 
 
