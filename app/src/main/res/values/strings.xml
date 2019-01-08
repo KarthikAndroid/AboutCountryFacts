@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CountryFacts</string>
+    <string name="no_title">No title Found</string>
+    <string name="no_description">No Description Found</string>
+</resources>
