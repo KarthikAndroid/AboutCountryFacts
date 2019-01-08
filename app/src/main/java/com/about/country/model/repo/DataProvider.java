@@ -78,6 +78,7 @@ public class DataProvider {
 
                     @Override
                     public void onError(Throwable e) {
+                        mObservableAbountCountryItemList.setValue(null);
                         e.printStackTrace();
                     }
 

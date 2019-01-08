@@ -1,5 +1,6 @@
 package com.about.country.view;
 
+import android.app.ProgressDialog;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
@@ -9,6 +10,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import com.about.country.R;
 import com.about.country.model.AboutCountryDetails;
@@ -32,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.recycleViewContainer)
     RecyclerView countryListView;
 
+    private ProgressDialog progressBar;
+
     private CountryRecycleAdapter aboutCountryAdapter;
 
     @Override
@@ -42,16 +46,40 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         final AboutContryViewModel viewModel =
                 ViewModelProviders.of(this).get(AboutContryViewModel.class);
-
         subscribeUi(viewModel.getAboutCountryItemsList());
         initUI();
 
     }
 
-    void initUI() {
+    private void showProgress()
+    {
+        progressBar = new ProgressDialog(this);
+        progressBar.setCancelable(true);
+        progressBar.setTitle("Fetching data..");
+        progressBar.show();
+    }
 
-        aboutCountryAdapter = new CountryRecycleAdapter(this,new ArrayList<AboutCountryListItem>());
+    private  void dismissProgressBar()
+    {
+        try {
+            progressBar.dismiss();
+        }
+        catch (NullPointerException e)
+        {
+         e.printStackTrace();
+        }
+        catch (Exception e)
+        {
+        e.printStackTrace();
+        }
+    }
 
+    /**
+     * Initialize the UI.
+     */
+    private void initUI() {
+
+        aboutCountryAdapter = new CountryRecycleAdapter(this, new ArrayList<AboutCountryListItem>());
         countryListView.setLayoutManager(new LinearLayoutManager(this));
         countryListView.setAdapter(aboutCountryAdapter);
         // Setup refresh listener which triggers new data loading
@@ -69,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
                 android.R.color.holo_green_light,
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
+        showProgress();
     }
 
     /**
@@ -88,8 +117,10 @@ public class MainActivity extends AppCompatActivity {
                     aboutCountryAdapter.notifyDataSetChanged();
                     swipeContainer.setRefreshing(false);
                 } else {
+                    Toast.makeText(MainActivity.this, R.string.network_error,Toast.LENGTH_LONG).show();;
                     swipeContainer.setRefreshing(false);
                 }
+                dismissProgressBar();
 
             }
         });

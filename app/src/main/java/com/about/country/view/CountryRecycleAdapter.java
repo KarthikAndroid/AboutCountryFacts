@@ -55,27 +55,29 @@ public class CountryRecycleAdapter extends RecyclerView.Adapter<CountryRecycleAd
         if (row.getTitle() != null) {
             holder.itemName.setText(row.getTitle());
         } else {
+            //If the Title is null then it will display the Default Error Text from String.xml
             holder.itemName.setText(R.string.no_title_found);
         }
         if (row.getDescription() != null) {
             holder.itemDesc.setText(row.getDescription());
         } else {
+            //If the Description is null then it will display the Default Error Text from String.xml
             holder.itemDesc.setText(R.string.no_description_found);
         }
         if (row.getImageHref() != null) {
-         //   Log.d("URLLLL", "" + row.getTitle() + row.getImageHref());
+            //If the image is not returned from the URL it will load the Plaveholder image
             Picasso.with(context).load(row.getImageHref())
                     .placeholder(R.drawable.placeholder_image)
                     .error(R.drawable.placeholder_image)
                     .into(holder.itemImg);
         } else {
+            //If the image is null then it will load the Plaveholder image
             Picasso.with(context).load(R.drawable.placeholder_image)
                     .placeholder(R.drawable.placeholder_image)
                     .error(R.drawable.placeholder_image)
                     .into(holder.itemImg);
 
         }
-
 
     }
 
@@ -96,7 +98,6 @@ public class CountryRecycleAdapter extends RecyclerView.Adapter<CountryRecycleAd
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
-
         }
     }
 
