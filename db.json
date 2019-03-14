@@ -1,11 +1,10 @@
-{
-   [
-   {
-      "firstName": "John",
-      "lastName": "Mano",
-      "employeeNum": "84213",
-      "location": "India",
-      "role": "Architect"
-   }    
+{"employees":[
+  {
+    "firstName": "John",
+    "lastName": "Mano",
+    "employeeNum": "84213",
+    "location": "India",
+    "role": "Architect"
+  }
 ]
 }
