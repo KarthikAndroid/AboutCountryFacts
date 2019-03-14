@@ -1,4 +1,5 @@
-[
+{
+   [
    {
       "firstName": "John",
       "lastName": "Mano",
@@ -7,3 +8,4 @@
       "role": "Architect"
    }    
 ]
+}
