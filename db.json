@@ -1,56 +1,58 @@
-[{
-    "firstName": "John",
-    "lastName": "Mano",
-    "employeeNum": 84213,
-    "location": "India",
-    "role": "Architect"
-  },
-  {
-    "firstName": "Amar",
-    "lastName": "Nathan",
-    "employeeNum": 64367,
-    "location": "India",
-    "role": "Developer"
-  },
-{
-    "firstName": "karthik",
-    "lastName": "Sundar",
-    "employeeNum": 54213,
-    "location": "India",
-    "role": "Admin"
-  },
-  {
-    "firstName": "sathish",
-    "lastName": "Nathan",
-    "employeeNum": 94367,
-    "location": "India",
-    "role": "supervisor"
-  },
-{
-    "firstName": "sundar",
-    "lastName": "Mano",
-    "employeeNum": 33213,
-    "location": "canada",
-    "role": "Architect"
-  },
-  {
-    "firstName": "pichai",
-    "lastName": "Nathan",
-    "employeeNum": 64367,
-    "location": "India",
-    "role": "Developer"
-  },
-{
-    "firstName": "John",
-    "lastName": "Mano",
-    "employeeNum": 84213,
-    "location": "canada",
-    "role": "Architect"
-  },
-  {
-    "firstName": "kalyan",
-    "lastName": "Nathan",
-    "employeeNum": 64367,
-    "location": "India",
-    "role": "Developer"
-  } ]
+[
+   {
+      "firstName": "John",
+      "lastName": "Mano",
+      "employeeNum": 84213,
+      "location": "India",
+      "role": "Architect"
+   },
+   {
+      "firstName": "Amar",
+      "lastName": "Nathan",
+      "employeeNum": 64367,
+      "location": "India",
+      "role": "Developer"
+   },
+   {
+      "firstName": "karthik",
+      "lastName": "Sundar",
+      "employeeNum": 54213,
+      "location": "India",
+      "role": "Admin"
+   },
+   {
+      "firstName": "sathish",
+      "lastName": "Nathan",
+      "employeeNum": 94367,
+      "location": "India",
+      "role": "supervisor"
+   },
+   {
+      "firstName": "sundar",
+      "lastName": "Mano",
+      "employeeNum": 33213,
+      "location": "canada",
+      "role": "Architect"
+   },
+   {
+      "firstName": "pichai",
+      "lastName": "Nathan",
+      "employeeNum": 64367,
+      "location": "India",
+      "role": "Developer"
+   },
+   {
+      "firstName": "John",
+      "lastName": "Mano",
+      "employeeNum": 84213,
+      "location": "canada",
+      "role": "Architect"
+   },
+   {
+      "firstName": "kalyan",
+      "lastName": "Nathan",
+      "employeeNum": 64367,
+      "location": "India",
+      "role": "Developer"
+   }
+]
